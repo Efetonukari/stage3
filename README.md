@@ -26,32 +26,17 @@ This project provides automated testing for the Zedu API (v1), covering the foll
 - **Profile Management** - User profile operations
 - **Organizations** - Organization-related functionality
 
-The test suite is organized into three categories for each module:
-- **Positive Tests** - Valid requests and successful scenarios
-- **Negative Tests** - Invalid inputs, error handling, and authentication failures
-- **Edge Cases** - Boundary conditions and special scenarios
+Each module has its own test file with comprehensive test coverage.
 
 ## 📁 Project Structure
 
 ```
 qa_test/
 ├── tests/                          # Test files directory
-│   ├── auth/                       # Authentication API tests
-│   │   ├── auth.positive.test.ts   # Valid login and auth scenarios
-│   │   ├── auth.negative.test.ts   # Auth failures and errors
-│   │   └── auth.edge-cases.test.ts # Edge cases for auth
-│   ├── users/                      # User management tests
-│   │   ├── users.positive.test.ts  # Valid user operations
-│   │   ├── users.negative.test.ts  # Invalid user operations
-│   │   └── users.edge-cases.test.ts # User edge cases
-│   ├── profile/                    # User profile tests
-│   │   ├── profile.positive.test.ts # Valid profile operations
-│   │   ├── profile.negative.test.ts # Profile error scenarios
-│   │   └── profile.edge-cases.test.ts # Profile edge cases
-│   └── organisations/              # Organization tests
-│       ├── organisations.positive.test.ts # Valid org operations
-│       ├── organisations.negative.test.ts # Org error scenarios
-│       └── organisations.edge-cases.test.ts # Org edge cases
+│   ├── test_auth.ts                # Authentication API tests
+│   ├── test_organisations.ts       # Organization tests
+│   ├── test_profile.ts             # User profile tests
+│   └── test_users.ts               # User management tests
 ├── utils/                          # Utility functions and helpers
 │   ├── api.ts                      # API request configuration
 │   ├── auth.ts                     # Authentication helpers
