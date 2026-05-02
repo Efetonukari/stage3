@@ -111,9 +111,9 @@ Runs all tests with verbose output and sequential execution (recommended for API
 
 ### Run Tests for Specific Module
 ```bash
-npm test -- auth.positive.test.ts
-npm test -- users.negative.test.ts
-npm test -- organisations
+npm test -- test_auth.ts
+npm test -- test_organisations.ts
+npm test -- test_profile.ts
 ```
 
 ### Run Tests Matching Pattern
@@ -139,7 +139,7 @@ Reruns tests automatically when files change (useful during development).
 
 ### Run Single Test File
 ```bash
-npm test -- tests/auth/auth.positive.test.ts
+npm test -- tests/test_auth.ts
 ```
 
 ## 📊 Test Organization
