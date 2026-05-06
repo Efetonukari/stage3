@@ -1,0 +1,44 @@
+name: Zedu API Automation CI
+
+# 1. TRIGGERS: Run automatically on push or pull requests to the main branch
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Run API Tests
+    runs-on: ubuntu-latest
+
+    # 2. SECRETS: Securely inject your environment variables
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+      TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js Environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x' # Use the Node version your project relies on
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm ci # 'npm ci' is strictly used in CI/CD pipelines instead of 'npm install'
+
+    - name: Execute API Test Suite
+      # If any test fails, this step exits with code 1, correctly failing the entire pipeline
+      run: npm test 
+
+    - name: Upload JUnit Test Report
+      uses: actions/upload-artifact@v4
+      if: always() # Ensures the report uploads even if the tests fail
+      with:
+        name: jest-junit-report
+        path: junit.xml
+        retention-days: 7

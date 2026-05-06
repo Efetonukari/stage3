@@ -1,5 +1,5 @@
 import { request } from '../utils/api';
-import { userLoginSchema } from '../utils/schema';
+import { userLoginSchema, errorSchema } from '../utils/schema'; // Ensure path is correct
 import { faker } from '@faker-js/faker';
 
 describe('Authentication API', () => {
@@ -15,7 +15,8 @@ describe('Authentication API', () => {
                 first_name: faker.person.firstName(),
                 last_name: faker.person.lastName()
             });
-            expect([200, 201]).toContain(res.status);
+            // Zedu returns 201 for successful creation
+            expect(res.status).toBe(201);
         });
     });
 
@@ -40,7 +41,10 @@ describe('Authentication API', () => {
                 first_name: 'Test',
                 last_name: 'User'
             });
-            expect(res.status).toBeGreaterThanOrEqual(400);
+            expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
     });
 
@@ -51,6 +55,9 @@ describe('Authentication API', () => {
                 password: 'WrongPassword!!!'
             });
             expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
 
         it('Should reject login with unregistered email', async () => {
@@ -58,7 +65,10 @@ describe('Authentication API', () => {
                 email: faker.internet.email(),
                 password: 'Password123!'
             });
-            expect([400, 401, 404]).toContain(res.status);
+            expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
     });
 
@@ -71,22 +81,30 @@ describe('Authentication API', () => {
                 first_name: 'Test',
                 last_name: 'User'
             });
-            expect(res.status).toBeGreaterThanOrEqual(400);
+            expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
     });
 
     describe('POST /auth/login - Edge Cases', () => {
         it('Should reject login with missing password field', async () => {
-            const res = await request.post('/auth/login').send({ 
-                email: process.env.TEST_USER_EMAIL 
+            const res = await request.post('/auth/login').send({
+                email: process.env.TEST_USER_EMAIL
             });
             expect(res.status).toBe(400);
-            expect(typeof res.body.message).toBe('string');
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
 
         it('Should reject login with empty payload {}', async () => {
             const res = await request.post('/auth/login').send({});
             expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
 
         it('Should reject login with invalid email format', async () => {
@@ -95,6 +113,9 @@ describe('Authentication API', () => {
                 password: 'Password123!'
             });
             expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
 
         it('Should handle SQL injection attempt in email gracefully', async () => {
@@ -102,7 +123,10 @@ describe('Authentication API', () => {
                 email: "' OR 1=1 --",
                 password: 'Password123!'
             });
-            expect([400, 401]).toContain(res.status);
+            expect(res.status).toBe(400);
+
+            const { error } = errorSchema.validate(res.body);
+            expect(error).toBeUndefined();
         });
     });
 });
