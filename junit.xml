@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="27" failures="0" errors="0" time="41.017">
+  <testsuite name="Authentication API" errors="0" failures="0" skipped="0" timestamp="2026-05-06T19:38:39" time="21.813" tests="10">
+    <testcase classname="Authentication API POST /auth/register - Positive Tests Should register a new user dynamically" name="Authentication API POST /auth/register - Positive Tests Should register a new user dynamically" time="1.819">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Positive Tests Should login with valid credentials &amp; validate schema" name="Authentication API POST /auth/login - Positive Tests Should login with valid credentials &amp; validate schema" time="1.082">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/register - Negative Tests Should fail registration with already registered email" name="Authentication API POST /auth/register - Negative Tests Should fail registration with already registered email" time="3.332">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Negative Tests Should reject login with invalid password" name="Authentication API POST /auth/login - Negative Tests Should reject login with invalid password" time="1.858">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Negative Tests Should reject login with unregistered email" name="Authentication API POST /auth/login - Negative Tests Should reject login with unregistered email" time="3.718">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/register - Edge Cases Should handle extremely long password during registration" name="Authentication API POST /auth/register - Edge Cases Should handle extremely long password during registration" time="2.594">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Edge Cases Should reject login with missing password field" name="Authentication API POST /auth/login - Edge Cases Should reject login with missing password field" time="1.125">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Edge Cases Should reject login with empty payload {}" name="Authentication API POST /auth/login - Edge Cases Should reject login with empty payload {}" time="0.86">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Edge Cases Should reject login with invalid email format" name="Authentication API POST /auth/login - Edge Cases Should reject login with invalid email format" time="0.838">
+    </testcase>
+    <testcase classname="Authentication API POST /auth/login - Edge Cases Should handle SQL injection attempt in email gracefully" name="Authentication API POST /auth/login - Edge Cases Should handle SQL injection attempt in email gracefully" time="0.819">
+    </testcase>
+  </testsuite>
+  <testsuite name="Protected User Routes" errors="0" failures="0" skipped="0" timestamp="2026-05-06T19:39:01" time="8.075" tests="6">
+    <testcase classname="Protected User Routes User Routes - Positive Tests Should fetch all users list using valid token &amp; strictly validate schema" name="Protected User Routes User Routes - Positive Tests Should fetch all users list using valid token &amp; strictly validate schema" time="0.696">
+    </testcase>
+    <testcase classname="Protected User Routes User Routes - Negative Tests Should reject profile access with NO token provided" name="Protected User Routes User Routes - Negative Tests Should reject profile access with NO token provided" time="0.753">
+    </testcase>
+    <testcase classname="Protected User Routes User Routes - Negative Tests Should reject profile access with malformed token" name="Protected User Routes User Routes - Negative Tests Should reject profile access with malformed token" time="0.705">
+    </testcase>
+    <testcase classname="Protected User Routes User Routes - Negative Tests Should reject profile access with mathematically expired token" name="Protected User Routes User Routes - Negative Tests Should reject profile access with mathematically expired token" time="0.705">
+    </testcase>
+    <testcase classname="Protected User Routes User Routes - Negative Tests Should reject access with missing &quot;Bearer&quot; prefix" name="Protected User Routes User Routes - Negative Tests Should reject access with missing &quot;Bearer&quot; prefix" time="0.735">
+    </testcase>
+    <testcase classname="Protected User Routes User Routes - Edge Cases Should handle fetching non-existent user ID" name="Protected User Routes User Routes - Edge Cases Should handle fetching non-existent user ID" time="0.797">
+    </testcase>
+  </testsuite>
+  <testsuite name="Organizations/Workspaces Routes" errors="0" failures="0" skipped="0" timestamp="2026-05-06T19:39:09" time="7.2" tests="8">
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should create an organization dynamically" name="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should create an organization dynamically" time="0.659">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should fetch a single organization by valid ID" name="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should fetch a single organization by valid ID" time="0.001">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should update an organization" name="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should update an organization" time="0">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should attempt to delete an organization" name="Organizations/Workspaces Routes Organizations Routes - Positive Tests Should attempt to delete an organization" time="0.001">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail creating an organization with empty payload" name="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail creating an organization with empty payload" time="0.861">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail creating organization missing required &quot;name&quot;" name="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail creating organization missing required &quot;name&quot;" time="0.716">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail to update organization without token" name="Organizations/Workspaces Routes Organizations Routes - Negative Tests Should fail to update organization without token" time="0.765">
+    </testcase>
+    <testcase classname="Organizations/Workspaces Routes Organizations Routes - Edge Cases Should return 400/404 for invalid organization ID format (string instead of UUID)" name="Organizations/Workspaces Routes Organizations Routes - Edge Cases Should return 400/404 for invalid organization ID format (string instead of UUID)" time="0.722">
+    </testcase>
+  </testsuite>
+  <testsuite name="Profile Route" errors="0" failures="0" skipped="0" timestamp="2026-05-06T19:39:16" time="3.401" tests="3">
+    <testcase classname="Profile Route Profile Route - Positive Tests Should fetch user profile with valid Bearer token" name="Profile Route Profile Route - Positive Tests Should fetch user profile with valid Bearer token" time="0.795">
+    </testcase>
+    <testcase classname="Profile Route Profile Route - Negative Tests Should reject fetching user profile with invalid Bearer token" name="Profile Route Profile Route - Negative Tests Should reject fetching user profile with invalid Bearer token" time="0.661">
+    </testcase>
+    <testcase classname="Profile Route Profile Route - Negative Tests Should reject fetching user profile with no token" name="Profile Route Profile Route - Negative Tests Should reject fetching user profile with no token" time="0.691">
+    </testcase>
+  </testsuite>
+</testsuites>

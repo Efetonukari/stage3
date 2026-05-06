@@ -10,7 +10,7 @@ This project utilizes GitHub Actions for Continuous Integration (`.github/workfl
 * **Artifacts:** Test results are formatted using `jest-junit` and uploaded as downloadable XML artifacts.
 
 ## 🚀 Local Setup Instructions
-1. Clone the repository: `git clone <repo-url>`
+1. Clone the repository: `git clone https://github.com/Efetonukari/stage3.git`
 2. Install dependencies: `npm install`
 3. Create a `.env` file in the root directory with the following variables:
    - `BASE_URL`
