@@ -15,11 +15,10 @@ describe('Authentication API', () => {
                 first_name: faker.person.firstName(),
                 last_name: faker.person.lastName()
             });
-            // Zedu returns 201 for successful creation
+            // Zedu returns 201 for successful creation instead of 200, so we check for 201 here
             expect(res.status).toBe(201);
         });
     });
-    
 
     describe('POST /auth/login - Positive Tests', () => {
         it('Should login with valid credentials & validate schema', async () => {
