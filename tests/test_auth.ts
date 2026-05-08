@@ -19,6 +19,7 @@ describe('Authentication API', () => {
             expect(res.status).toBe(201);
         });
     });
+    
 
     describe('POST /auth/login - Positive Tests', () => {
         it('Should login with valid credentials & validate schema', async () => {
