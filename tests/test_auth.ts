@@ -27,6 +27,7 @@ describe('Authentication API', () => {
                 password: process.env.TEST_USER_PASSWORD
             });
             expect(res.status).toBe(400);
+            
             const { error } = userLoginSchema.validate(res.body);
             expect(error).toBeUndefined();
         });
