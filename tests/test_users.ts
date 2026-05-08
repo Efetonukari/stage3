@@ -17,7 +17,7 @@ describe('Protected User Routes', () => {
             const res = await request.get('/users').set('Authorization', `Bearer ${token}`);
             
             // STRICT: Exactly 200 OK
-            expect(res.status).toBe(400); 
+            expect(res.status).toBe(200); 
             
             // DEEP SCHEMA VALIDATION (Validates every single user in the array)
             const { error } = allUsersListSchema.validate(res.body);
