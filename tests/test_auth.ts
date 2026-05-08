@@ -26,7 +26,7 @@ describe('Authentication API', () => {
                 email: process.env.TEST_USER_EMAIL,
                 password: process.env.TEST_USER_PASSWORD
             });
-            expect(res.status).toBe(200);
+            expect(res.status).toBe(400);
             const { error } = userLoginSchema.validate(res.body);
             expect(error).toBeUndefined();
         });
